@@ -20,6 +20,13 @@
       </h4>
       <hr />
     </div>
+    <div>
+      <% flash.each do |k, msg| %>     <!-- iterating a Hash, so specify key and val vars -->
+        <ul>
+          <li><%= msg %></li>
+        </ul>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

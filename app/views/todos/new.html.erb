@@ -1,0 +1,36 @@
+<div align="center">
+  <h3> Create a new To-Do list item </h3>
+
+  <div>
+    <% if @todo.errors.any? %>                          <!-- check if any errors present -->
+      <p>
+        Your To-Do item could not be saved:            <!-- if yes, display the messages -->
+        <ul>
+          <% @todo.errors.full_messages.each do |msg| %> <!-- for all @todo err messages -->
+            <li> <%= msg %> </li>                           <!-- display message in list -->
+          <% end %>
+        </ul>
+      </p>
+    <% end %>
+  </div>
+
+  <%= form_with model: @todo, local: true do |td_form| %>         <!-- using '=' erb tag -->
+
+    <div>
+      <%= td_form.label       :name %>            <!-- specifying form field & its value -->
+      <br />
+      <%= td_form.text_field  :name %>          
+    </div>
+
+    <div>
+      <%= td_form.label     :description %>              <!-- label of description field -->
+      <br />
+      <%= td_form.text_area :description %>               <!-- area to enter description -->
+    </div>
+
+    <div>
+      <%= td_form.submit %>                         <!-- submit the data to @td variable -->
+    </div>
+
+  <% end %>                                                      <!-- end the Ruby block -->
+</div>
