@@ -1,10 +1,25 @@
-<div align="center">
-  <h1> ToDoApp </h1>
-  <h4>
-    <%= link_to 'Home', root_path %>
-    | <%= link_to 'My To-Do List', todos_path %> <!-- again using route prefix and _path -->
-    | <%= link_to 'About', about_path %>
-    | <%= link_to 'Help', help_path %>
-  </h4>
-  <hr />
-</div>
+<header>
+  <ul id="nav-dropdown" class="dropdown-content">
+    <% Todo.all.each do |todo| %>
+      <li><%= link_to "#{todo.id}: #{todo.name}", todo_path(todo) %></li>
+      <li class="divider"></li>
+    <% end %>
+    <li><%= link_to 'All To-Do Items', todos_path %></li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo left">&nbsp; ToDo App</a>
+      <ul class="right">
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'About', about_path %></li>
+        <li><%= link_to 'Help', help_path %></li>
+        <!-- Dropdown Trigger -->
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="nav-dropdown">
+            To-Do Items <i class="material-icons right">arrow_drop_down</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
