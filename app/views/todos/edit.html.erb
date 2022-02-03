@@ -35,6 +35,12 @@
   <% end %>                                                      <!-- end the Ruby block -->
   <p>
     <%= link_to 'Back to To-Do item', todo_path(@todo) %>                <!-- #show link -->
+    | <%=
+      link_to 'Delete this item',
+      todo_path(@todo),
+      method: :delete,
+      data: {confirm: 'Are you sure?'}
+    %>
     |  <%= link_to 'Back to To-Do list', todos_path %>                  <!-- #index link -->
   </p>
 </div>

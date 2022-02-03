@@ -14,6 +14,14 @@
         <td> <%= todo.description %> </td>
         <td> <%= link_to 'Show', todo_path(todo) %> </td>      <!-- pass todo var as arg -->
         <td> <%= link_to 'Edit', edit_todo_path(todo) %> </td>      <!-- #edit view link -->
+        <td>
+          <%=                                            ## insert embedded ruby
+            link_to 'Delete',                            ## link text
+            todo_path(todo),                             ## pass the #show URI pattern
+            method: :delete,                             ## specify the method (verb) to use
+            data: {confirm: 'Are you sure?'}             ## add confirmation prompt and text
+          %>                                                        <!-- end erb block -->
+        </td>
       </tr>
     <% end %>                                                    <!-- end the each block -->
   </table>                                                      <!-- close off the table -->

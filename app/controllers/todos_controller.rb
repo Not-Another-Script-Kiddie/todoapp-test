@@ -36,6 +36,13 @@ class TodosController < ApplicationController  ## Again basing this on the maste
     @todos = Todo.all                           ## simply grab all of the Todo items
   end
 
+  def destroy
+    @todo = Todo.find(params[:id])                      ## find item
+    @todo.destroy                                       ## remove entry from DB as learned
+    flash[:notice] = 'Successfully deleted To-Do item'  ## notify user
+    redirect_to todos_path                              ## go back to the To-Do list
+  end
+
   private                                                ## THIS CONTROLLER ONLY
     def todo_params
       params.require(:todo).permit(:name, :description)  ## whitelisting params fields
