@@ -11,23 +11,8 @@
   </head>
 
   <body>
-    <div align="center">
-      <h1> ToDoApp </h1>
-      <h4>
-        <%= link_to 'Home', root_path %>
-        | <%= link_to 'My To-Do List', todos_path %>  <!-- use route prefix and _path -->
-        | <%= link_to 'About', about_path %>
-        | <%= link_to 'Help', help_path %>
-      </h4>
-      <hr />
-    </div>
-    <div>
-      <% flash.each do |k, msg| %>     <!-- iterating a Hash, so specify key and val vars -->
-        <ul>
-          <li><%= msg %></li>
-        </ul>
-      <% end %>
-    </div>
+    <%= render 'layouts/navigation' %>          <!-- don't have to include _ prefix here -->
+    <%= render 'layouts/messages' %>           <!-- no need to specify file type either! -->
     <%= yield %>
   </body>
 </html>

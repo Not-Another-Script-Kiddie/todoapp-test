@@ -1,0 +1,28 @@
+<% if @todo.errors.any? %>                             <!-- check if any errors present -->
+  <h3> Your To-Do item could not be saved: </h3>      <!-- if yes, display the messages -->
+  <ul>
+    <% @todo.errors.full_messages.each do |msg| %>      <!-- for all @todo err messages -->
+      <li> <%= msg %> </li>                                <!-- display message in list -->
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @todo do |td_form| %>    <!-- using '=' erb tag as we're inserting -->
+
+  <div>
+    <%= td_form.label       :name %>             <!-- specifying form field & its value -->
+    <br />
+    <%= td_form.text_field  :name %>
+  </div>
+
+  <div>
+    <%= td_form.label     :description %>               <!-- label of description field -->
+    <br />
+    <%= td_form.text_area :description %>                <!-- area to enter description -->
+  </div>
+
+  <div>
+    <%= td_form.submit %>                          <!-- submit the data to @td variable -->
+  </div>
+
+<% end %>                                                       <!-- end the Ruby block -->

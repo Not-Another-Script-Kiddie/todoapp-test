@@ -1,7 +1,7 @@
 class TodosController < ApplicationController  ## Again basing this on the master template
+  before_action :set_todo, only: [:show, :edit, :update, :destroy]   ## find Todo items
 
   def show 
-    @todo = Todo.find(params[:id])             ## Assign the Todo obj to instance (@) var
   end
 
   def new
@@ -19,11 +19,9 @@ class TodosController < ApplicationController  ## Again basing this on the maste
   end
 
   def edit
-    @todo = Todo.find(params[:id])         ## find Todo to edit from the ID in browser path
   end
 
   def update
-    @todo = Todo.find(params[:id])         ## find the item
     if @todo.update(todo_params)           ## update DB entry
       flash[:notice] = 'Your To-Do item was successfully updated!'
       redirect_to todo_path(@todo)         ## redirect to show view if successful
@@ -37,7 +35,6 @@ class TodosController < ApplicationController  ## Again basing this on the maste
   end
 
   def destroy
-    @todo = Todo.find(params[:id])                      ## find item
     @todo.destroy                                       ## remove entry from DB as learned
     flash[:notice] = 'Successfully deleted To-Do item'  ## notify user
     redirect_to todos_path                              ## go back to the To-Do list
@@ -46,6 +43,10 @@ class TodosController < ApplicationController  ## Again basing this on the maste
   private                                                ## THIS CONTROLLER ONLY
     def todo_params
       params.require(:todo).permit(:name, :description)  ## whitelisting params fields
+    end
+
+    def set_todo
+      @todo = Todo.find(params[:id])
     end
 
 end
