@@ -2,4 +2,8 @@
   <h3> To-Do item: <%= @todo.id.to_s %> </h3>
   <p> Name: <%= @todo.name %> </p>
   <p> Description: <%= @todo.description %> </p>
+  <p>
+    <%= link_to 'Edit this item', edit_todo_path(@todo) %> <!-- pass obj from controller -->
+    |  <%= link_to 'Back to To-Do list', todos_path %>       <!-- don't need to pass obj -->
+  </p>
 </div>

@@ -1,0 +1,21 @@
+<div align="center">
+  <h3> Your To-Do items: </h3>
+
+  <table border=1>                                       <!-- create table with a border -->
+    <tr>
+      <th> ID </th>                              <!-- give the table appropriate headers -->
+      <th> Name </th>
+      <th> Description </th>
+    </tr>
+    <% @todos.each do |todo| %>                          <!-- array passed by controller -->
+      <tr>                                                  <!-- new row per Todo object --> 
+        <td> <%= todo.id.to_s %> </td>                      <!-- insert values of object -->
+        <td> <%= link_to todo.name, todo_path(todo) %> </td>     <!-- link name to #show -->
+        <td> <%= todo.description %> </td>
+        <td> <%= link_to 'Show', todo_path(todo) %> </td>      <!-- pass todo var as arg -->
+        <td> <%= link_to 'Edit', edit_todo_path(todo) %> </td>      <!-- #edit view link -->
+      </tr>
+    <% end %>                                                    <!-- end the each block -->
+  </table>                                                      <!-- close off the table -->
+  <p> <%= button_to 'Create new To-Do item', new_todo_path, method: :get %> <p>
+</div>
