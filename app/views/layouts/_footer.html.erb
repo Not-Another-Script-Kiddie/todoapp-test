@@ -13,10 +13,10 @@
       <div class="col s12 l4 offset-l2">
         <h6>Footer Navigation</h6>
         <ul>
-          <li><%= link_to 'Home', root_path %></li>
-          <li><%= link_to 'About', about_path %></li>
-          <li><%= link_to 'To-Do List', todos_path %></li>
-          <li><%= link_to 'Create New To-Do Item', new_todo_path %></li>
+          <li><%= link_to root_path do %><i class="material-icons inline">home</i>&nbsp; Home<% end %></li>
+          <li><%= link_to about_path do %><i class="material-icons inline">info</i>&nbsp; About<% end %></li>
+          <li><%= link_to todos_path do %><i class="material-icons inline">list</i>&nbsp; To-Do List<% end %></li>
+          <li><%= link_to new_todo_path do %><i class="material-icons inline">create</i>&nbsp; New To-Do Item<% end %></li>
         </ul>
       </div>
     </div>

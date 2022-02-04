@@ -10,7 +10,11 @@
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo left">&nbsp; ToDo App</a>
       <ul class="right">
-        <li><%= link_to 'Home', root_path %></li>
+        <li>
+          <%= link_to root_path do %>
+            <i class="material-icons">home</i>
+          <% end %>
+        </li>
         <li><%= link_to 'About', about_path %></li>
         <li><%= link_to 'Help', help_path %></li>
         <!-- Dropdown Trigger -->
