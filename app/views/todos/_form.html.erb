@@ -1,28 +1,50 @@
-<% if @todo.errors.any? %>                             <!-- check if any errors present -->
-  <h3> Your To-Do item could not be saved: </h3>      <!-- if yes, display the messages -->
-  <ul>
-    <% @todo.errors.full_messages.each do |msg| %>      <!-- for all @todo err messages -->
-      <li> <%= msg %> </li>                                <!-- display message in list -->
-    <% end %>
-  </ul>
+<% if @todo.errors.any? %>
+  <div class="row">
+    <div class="col s8 xl5">             <!-- reduce the size on larger screens -->
+      <div class="card red lighten-4">   <!-- add a colour to the class to fill it (default is white) -->
+        <div class="card-content">
+          <i class="material-icons medium right">error</i>
+          <span class="card-title">To-Do item could not be saved</span>
+          <p>
+            <ul class="browser-default">
+              <% @todo.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 <%= form_with model: @todo do |td_form| %>    <!-- using '=' erb tag as we're inserting -->
 
-  <div>
-    <%= td_form.label       :name %>             <!-- specifying form field & its value -->
-    <br />
-    <%= td_form.text_field  :name %>
+  <div class="row">
+    <div class="input-field col s8">
+      <i class="material-icons prefix">title</i>
+      <%= td_form.text_field :name, :"data-length" => @todo.length_val(:name, :maximum) %>
+      <%= td_form.label      :name %>
+    </div>
   </div>
 
-  <div>
-    <%= td_form.label     :description %>               <!-- label of description field -->
-    <br />
-    <%= td_form.text_area :description %>                <!-- area to enter description -->
+  <div class="row">
+    <div class="input-field col s8">
+      <i class="material-icons prefix">subject</i>
+      <%= td_form.text_area :description,
+                            class: 'materialize-textarea',
+                            :"data-length" => @todo.length_val(:description, :maximum) %>
+      <%= td_form.label     :description %>
+    </div>
   </div>
 
-  <div>
-    <%= td_form.submit %>                          <!-- submit the data to @td variable -->
+  <div class="row">
+    <div class="col s8 center-align">
+      <%= td_form.button :class => 'btn waves-effect waves-light' do %>  <!-- use btn-large for bigger button -->
+        <%= td_form.send(:submit_default_value) %>  <!-- Fetch what submit helper would have shown -->
+        <i class="material-icons right">save</i>
+      <% end %>
+    </div>
   </div>
 
-<% end %>                                                       <!-- end the Ruby block -->
+<% end %>  <!-- end the Rails form block -->

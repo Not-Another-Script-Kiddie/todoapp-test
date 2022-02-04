@@ -1,7 +1,3 @@
-<div>
-  <% flash.each do |k, msg| %>          <!-- iterating a Hash, so specify key and val vars -->
-    <ul>
-      <li><%= msg %></li>
-    </ul>
-  <% end %>
-</div>
+<% flash.each do |k, msg| %>
+  <script>M.toast({html: "<i class='material-icons'>info</i> &nbsp; <%= msg.to_s %>"})</script>
+<% end %>
