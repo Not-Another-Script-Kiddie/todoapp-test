@@ -1,16 +1,36 @@
-<div align="center">
-  <h3> Edit To-Do list item: <%= @todo.id.to_s %> </h3>
-
-  <%= render 'form' %>
-
-  <p>
-    <%= link_to 'Back to To-Do item', todo_path(@todo) %>                <!-- #show link -->
-    | <%=
-      link_to 'Delete this item',
-      todo_path(@todo),
-      method: :delete,
-      data: {confirm: 'Are you sure?'}
-    %>
-    |  <%= link_to 'Back to To-Do list', todos_path %>                  <!-- #index link -->
-  </p>
+<div class="container">
+  <div class="row">
+    <h3>Edit To-Do list item: <strong><%= @todo.id.to_s %></strong></h3>
+  </div>
+  <div class="row">
+    <%= render 'form' %>
+  </div>
+  <div class="row">
+    <div class="col s2 xl1 offset-s1 offset-xl2 center">
+      <%= link_to todo_path(@todo),
+                  class: 'btn-floating btn-large waves-effect blue tooltipped center',
+                  :"data-tooltip" => 'Back to To-Do Item',
+                  :"data-position" => 'bottom' do %>
+        <i class="material-icons">visibility</i>
+      <% end %>
+    </div>
+    <div class="col s2 center">
+      <%= link_to todo_path(@todo),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class: 'btn-floating btn-large waves-effect red tooltipped center',
+                  :"data-tooltip" => 'Delete To-Do Item',
+                  :"data-position" => 'bottom' do %>
+        <i class="material-icons">delete</i>
+      <% end %>
+    </div>
+    <div class="col s2 xl1 center">
+      <%= link_to todos_path,
+                  class: 'btn-floating btn-large waves-effect green tooltipped center',
+                  :"data-tooltip" => 'Back to To-Do List',
+                  :"data-position" => 'bottom' do %>
+        <i class="material-icons">subdirectory_arrow_left</i>
+      <% end %>
+    </div>
+  </div>
 </div>
