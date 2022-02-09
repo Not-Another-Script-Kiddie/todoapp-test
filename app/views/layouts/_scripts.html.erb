@@ -1,0 +1,33 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    M.AutoInit();
+    M.CharacterCounter.init(document.querySelectorAll('[data-length]'));
+    M.updateTextFields();
+    Array.from(document.getElementsByClassName('field_with_errors')).forEach(fixErrorDiv);  // call function
+  });
+
+  if (document.readyState!='loading') {
+    M.AutoInit();
+    M.CharacterCounter.init(document.querySelectorAll('[data-length]'));
+    M.updateTextFields();
+  };
+
+  function fixErrorDiv(elem) {
+    if(elem.childElementCount === 0 || elem.firstElementChild.localName === 'label') {
+      return;  // skip label divs or divs already done
+    };
+    var parElem = elem.parentElement;  // find the input-field div
+    var elems = Array.from(parElem.children).map(extractErrDivContent).flat();  // grab everything in it
+    parElem.classList.add('field_with_errors');  // add required class to input-field div
+    parElem.replaceChildren();  // remove everything in input-field div
+    for (let i in elems) { parElem.append(elems[i]) };  // put everything in the new div
+  };
+
+  function extractErrDivContent(errDiv) {
+    if(errDiv.className === 'field_with_errors') {
+      return Array.from(errDiv.children);  // extract contents of field_with_errors div
+    } else {
+      return errDiv
+    };
+  };
+</script>

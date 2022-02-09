@@ -1,7 +1,18 @@
-<div align="center">
-  <h3> Create a new To-Do list item </h3>
-
-  <%= render 'form' %>
-
-  <p> <%= link_to 'Cancel', todos_path %> </p>
+<div class="container">
+  <div class="row">
+    <h3>New To-Do list item</h3>
+  </div>
+  <div class="row">
+    <%= render 'form' %>
+  </div>
+  <div class="row">
+    <div class="col s8 center-align">
+      <%= link_to todos_path,
+                     :class => 'btn-floating btn-large waves-effect waves-light red tooltipped',
+                     :"data-tooltip" => 'Cancel',
+                     :"data-position" => 'bottom' do %>
+        <i class="material-icons">close</i>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -6,13 +6,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'layouts/navigation' %>          <!-- don't have to include _ prefix here -->
-    <%= render 'layouts/messages' %>           <!-- no need to specify file type either! -->
-    <%= yield %>
+    <main>
+      <%= render 'layouts/messages' %>           <!-- no need to specify file type either! -->
+      <%= yield %>
+    </main>
+    <%= render 'layouts/footer' %>
+    <%= render 'layouts/scripts' %>
   </body>
 </html>

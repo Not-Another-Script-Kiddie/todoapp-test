@@ -1,0 +1,26 @@
+@import "materialize-css/sass/components/color-variables";
+$primary-color: color('green', 'darken-3') !default;
+$secondary-color: color('teal', 'lighten-1') !default;
+@import 'materialize-css';
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+a {
+  color: $secondary-color;
+}
+
+footer a {
+  color: color('amber', 'base');
+}
+
+i.inline {
+  vertical-align: middle;
+}

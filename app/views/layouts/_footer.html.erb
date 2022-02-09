@@ -1,0 +1,30 @@
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h5 class="center">To-Do App</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 l6">
+        <p>This text will appear across the whole row on a small screen, or half the row on a large screen!</p>
+        <p>If you think that's cool, it will also use this logic to determine whether the next div lives beside or below this one!</p>
+      </div>
+      <div class="col s12 l4 offset-l2">
+        <h6>Footer Navigation</h6>
+        <ul>
+          <li><%= link_to root_path do %><i class="material-icons inline">home</i>&nbsp; Home<% end %></li>
+          <li><%= link_to about_path do %><i class="material-icons inline">info</i>&nbsp; About<% end %></li>
+          <li><%= link_to todos_path do %><i class="material-icons inline">list</i>&nbsp; To-Do List<% end %></li>
+          <li><%= link_to new_todo_path do %><i class="material-icons inline">create</i>&nbsp; New To-Do Item<% end %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      Made with love by Not Another Script Kiddie
+      <a class="right" href="https://empydoodle.blogspot.com/p/a-british-gentlemans-guide-to-ruby-on.html">Guide / Blog</a>
+    </div>
+  </div>
+</footer>

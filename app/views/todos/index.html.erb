@@ -1,29 +1,59 @@
-<div align="center">
-  <h3> Your To-Do items: </h3>
+<div class="container">
+  <div class="row valign-wrapper">
+    <div class="col s8">
+      <h3 class="header">Your To-Do List</h3>
+    </div>
+    <div class="col s4">
+      <%= link_to 'New To-Do Item', new_todo_path, class: 'btn waves-effect waves-light right' %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="highlight">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th colspan="3">Actions</th>
+        </tr>
+      </thead>
 
-  <table border=1>                                       <!-- create table with a border -->
-    <tr>
-      <th> ID </th>                              <!-- give the table appropriate headers -->
-      <th> Name </th>
-      <th> Description </th>
-    </tr>
-    <% @todos.each do |todo| %>                          <!-- array passed by controller -->
-      <tr>                                                  <!-- new row per Todo object --> 
-        <td> <%= todo.id.to_s %> </td>                      <!-- insert values of object -->
-        <td> <%= link_to todo.name, todo_path(todo) %> </td>     <!-- link name to #show -->
-        <td> <%= todo.description %> </td>
-        <td> <%= link_to 'Show', todo_path(todo) %> </td>      <!-- pass todo var as arg -->
-        <td> <%= link_to 'Edit', edit_todo_path(todo) %> </td>      <!-- #edit view link -->
-        <td>
-          <%=                                            ## insert embedded ruby
-            link_to 'Delete',                            ## link text
-            todo_path(todo),                             ## pass the #show URI pattern
-            method: :delete,                             ## specify the method (verb) to use
-            data: {confirm: 'Are you sure?'}             ## add confirmation prompt and text
-          %>                                                        <!-- end erb block -->
-        </td>
-      </tr>
-    <% end %>                                                    <!-- end the each block -->
-  </table>                                                      <!-- close off the table -->
-  <p> <%= button_to 'Create new To-Do item', new_todo_path, method: :get %> <p>
+      <tbody>
+        <% @todos.each do |todo| %>
+          <tr>
+            <td><%= todo.id.to_s %></td>
+            <td><%= link_to todo.name, todo_path(todo) %></td>
+            <td><%= todo.description %></td>
+            <td>
+              <%= link_to todo_path(todo),
+                          :class => 'tooltipped',
+                          :"data-tooltip" => 'Show To-Do Item',
+                          :"data-position" => 'bottom' do %>
+                <i class="material-icons">visibility</i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to edit_todo_path(todo),
+                          :class => 'tooltipped',
+                          :"data-tooltip" => 'Edit To-Do Item',
+                          :"data-position" => 'bottom' do %>
+                <i class="material-icons">edit</i>
+              <% end %>
+            </td>
+            <td>
+              <%=
+                link_to todo_path(todo),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' },
+                        :class => 'tooltipped',
+                        :"data-tooltip" => 'Delete To-Do Item',
+                        :"data-position" => 'bottom' do %>
+                <i class="material-icons">delete</i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
