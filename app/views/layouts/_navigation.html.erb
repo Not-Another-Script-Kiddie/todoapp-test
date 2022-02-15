@@ -1,14 +1,14 @@
 <header>
   <ul id="nav-dropdown" class="dropdown-content">
     <% Todo.all.each do |todo| %>
-      <li><%= link_to "#{todo.id}: #{todo.name}", todo_path(todo) %></li>
+      <li><%= link_to "#{todo.id}: #{truncate(todo.name, length: 40)}", todo_path(todo) %></li>
       <li class="divider"></li>
     <% end %>
     <li><%= link_to 'All To-Do Items', todos_path %></li>
   </ul>
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo left">&nbsp; ToDo App</a>
+      <a href="#!" class="brand-logo left">&nbsp; ToDoList</a>
       <ul class="right">
         <li>
           <%= link_to root_path do %>

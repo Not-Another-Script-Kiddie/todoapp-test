@@ -8,4 +8,5 @@ class PagesController < ApplicationController    ## defining classes = CamelCase
   
   def help
   end
+
 end

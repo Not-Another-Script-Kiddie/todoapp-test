@@ -23,7 +23,7 @@
           <tr>
             <td><%= todo.id.to_s %></td>
             <td><%= link_to todo.name, todo_path(todo) %></td>
-            <td><%= todo.description %></td>
+            <td><%= truncate(todo.description, length: 100) %></td>
             <td>
               <%= link_to todo_path(todo),
                           :class => 'tooltipped',
