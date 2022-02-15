@@ -1,3 +1,4 @@
+<% content_for(:html_title) { @todo.name } %>
 <div align="center">
   <h3> To-Do item: <%= @todo.id.to_s %> </h3>
   <p> Name: <%= @todo.name %> </p>
