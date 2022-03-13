@@ -8,10 +8,18 @@
     <li class="divider"></li>
     <li><%= link_to new_todo_path do %><i class="material-icons">create</i><br />New To-Do item<% end %></li>
   </ul>
+  <ul id="mobile-nav" class="sidenav">
+    <li><h3 class="center"> ToDoList </h3></li>
+    <li><%= link_to root_path do %><i class="material-icons inline">home</i> Home<% end %></li>
+    <li><%= link_to about_path do %><i class="material-icons inline">info</i> About<% end %></li>
+    <li><%= link_to help_path do %><i class="material-icons inline">help</i> Help<% end %></li>
+    <li><%= link_to todos_path do %><i class="material-icons inline">list</i> To-Do List<% end %></li>
+  </ul>
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo left">&nbsp; ToDoList</a>
-      <ul class="right">
+      <%= link_to root_path, class: 'brand-logo left' do %>&nbsp; ToDoList<% end %>
+      <a class="sidenav-trigger right" data-target="mobile-nav" onclick="openSideNav();"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
         <li>
           <%= link_to root_path do %>
             <i class="material-icons">home</i>
@@ -28,4 +36,10 @@
       </ul>
     </div>
   </nav>
+  <script>
+    function openSideNav() {
+      var instance = M.Sidenav.getInstance(document.querySelector('.sidenav'));
+      instance.open();
+    }
+  </script>
 </header>
