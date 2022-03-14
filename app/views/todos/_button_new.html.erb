@@ -1,0 +1,6 @@
+<%= link_to new_todo_path,
+            class: 'btn-floating btn-large waves-effect waves-light tooltipped',
+            :"data-tooltip" => 'New To-Do Item',
+            :"data-position" => (tooltip_pos rescue 'bottom') do %>
+  <i class="material-icons">add</i>
+<% end %>

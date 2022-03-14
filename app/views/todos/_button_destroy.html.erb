@@ -1,0 +1,8 @@
+<%= link_to todo_path(@todo),
+            method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: 'btn-floating btn-large waves-effect red tooltipped center',
+            :"data-tooltip" => 'Delete To-Do Item',
+            :"data-position" => (tooltip_pos rescue 'bottom') do %>
+  <i class="material-icons">delete</i>
+<% end %>

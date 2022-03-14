@@ -7,9 +7,7 @@
       <%= link_to 'New To-Do Item', new_todo_path, class: 'btn waves-effect waves-light right' %>
     </div>
     <div class="fixed-action-btn hide-on-med-and-up">
-      <%= link_to new_todo_path, class: 'btn-floating btn-large waves-effect waves-light' do %>
-        <i class="material-icons">add</i>
-      <% end %>
+      <%= render 'button_new', tooltip_pos: 'left' %>
     </div>
   </div>
   <div class="row">

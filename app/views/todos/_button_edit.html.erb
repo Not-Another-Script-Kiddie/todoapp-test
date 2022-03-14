@@ -1,0 +1,6 @@
+<%= link_to edit_todo_path(@todo),
+            class: 'btn-floating btn-large waves-effect orange tooltipped center',
+            :"data-tooltip" => 'Edit To-Do Item',
+            :"data-position" => (tooltip_pos rescue 'bottom') do %>
+  <i class="material-icons">create</i>
+<% end %>
