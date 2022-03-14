@@ -1,6 +1,6 @@
 <% if @todo.errors.any? %>
   <div class="row">
-    <div class="col s8 xl5">             <!-- reduce the size on larger screens -->
+    <div class="col s12 m8 xl5">         <!-- reduce the size on larger screens -->
       <div class="card red lighten-4">   <!-- add a colour to the class to fill it (default is white) -->
         <div class="card-content">
           <i class="material-icons medium right">error</i>
@@ -21,7 +21,7 @@
 <%= form_with model: @todo do |td_form| %>    <!-- using '=' erb tag as we're inserting -->
 
   <div class="row">
-    <div class="input-field col s8">
+    <div class="input-field col s12 m8">
       <i class="material-icons prefix">title</i>
       <%= td_form.text_field :name, :"data-length" => @todo.length_val(:name, :maximum) %>
       <%= td_form.label      :name %>
@@ -29,7 +29,7 @@
   </div>
 
   <div class="row">
-    <div class="input-field col s8">
+    <div class="input-field col s12 m8">
       <i class="material-icons prefix">subject</i>
       <%= td_form.text_area :description,
                             class: 'materialize-textarea',
@@ -39,7 +39,7 @@
   </div>
 
   <div class="row">
-    <div class="col s8 center-align">
+    <div class="col s12 m8 center-align">
       <%= td_form.button :class => 'btn waves-effect waves-light' do %>  <!-- use btn-large for bigger button -->
         <%= td_form.send(:submit_default_value) %>  <!-- Fetch what submit helper would have shown -->
         <i class="material-icons right">save</i>
