@@ -23,7 +23,11 @@
   <div class="row">
     <div class="input-field col s12 m8">
       <i class="material-icons prefix">title</i>
-      <%= td_form.text_field :name, :"data-length" => @todo.length_val(:name, :maximum) %>
+      <%= td_form.text_field :name,
+                             class: 'validate',
+                             required: @todo.required_field?(:name),
+                             :"aria-required" => @todo.required_field?(:name),
+                             :"data-length" => @todo.length_val(:name, :maximum) %>
       <%= td_form.label      :name %>
     </div>
   </div>
@@ -32,7 +36,9 @@
     <div class="input-field col s12 m8">
       <i class="material-icons prefix">subject</i>
       <%= td_form.text_area :description,
-                            class: 'materialize-textarea',
+                            class: 'materialize-textarea validate',
+                             required: @todo.required_field?(:description),
+                             :"aria-required" => @todo.required_field?(:description),
                             :"data-length" => @todo.length_val(:description, :maximum) %>
       <%= td_form.label     :description %>
     </div>
